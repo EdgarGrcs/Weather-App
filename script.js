@@ -7,22 +7,68 @@
  *  - ex use giphy API for that
  */
 
-
-
 // https://openweathermap.org/current  -- API documentation
 
 
+async function getLocation(city) {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=cfe4c10894e8958662e9f26648de2b00`);
+    try {
+        const cityData = getWeatherData(await response.json());
+        return cityData;
+    } catch (error) {
+        alert("Error");
+        return null;
+    }
+}
+
+function getWeatherData(data) {
+
+    const {
+        name: cityName,
+        main: {
+            feels_like: feelsLike,
+            humidity: humidity,
+            temp: temperature,
+            temp_max: tempMax,
+            temp_min: tempMin,
+        },
+        weather: [{
+            main: info,
+            description: description,
+        }],
+        wind: { speed: windSpeed },
+    } = data;
+
+    console.log(data);
 
 
-async function getFrankfurtWeather() {
-
-    const response = await fetch("http://api.openweathermap.org/geo/1.0/direct?q=Frankfurt&limit=5&appid=cfe4c10894e8958662e9f26648de2b00");
-    const frankfurtData = await response.json();
-
-    console.log(frankfurtData);
-    // Wait for API key to activate
-
+    return { cityName, feelsLike, humidity, temperature, windSpeed, tempMax, tempMin, info, description };
 }
 
 
-getFrankfurtWeather();
+async function appendData() {
+
+    const temp = document.querySelector(".temperature");
+    const weatherInfo = document.querySelector(".weather-condition");
+    const maxTemp = document.querySelector(".maxTemp");
+    const minTemp = document.querySelector(".minTemp");
+    const humidity = document.querySelector(".humidity");
+    const windSpeed = document.querySelector(".windSpeed");
+
+
+    const data = await getLocation("Frankfurt");
+    temp.textContent = data.temperature;
+    weatherInfo.textContent = data.info;
+
+
+    maxTemp.textContent = data.tempMax;
+    minTemp.textContent = data.tempMin;
+    humidity.textContent = data.humidity;
+    windSpeed.textContent = data.windSpeed;
+
+
+
+
+}
+
+appendData();
