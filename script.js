@@ -16,7 +16,7 @@ async function getLocation(city) {
         const cityData = getWeatherData(await response.json());
         return cityData;
     } catch (error) {
-        alert("Error");
+        alert(`City named ${city} not found!`);
         return null;
     }
 }
@@ -26,7 +26,6 @@ function getWeatherData(data) {
     const {
         name: cityName,
         main: {
-            feels_like: feelsLike,
             humidity: humidity,
             temp: temperature,
             temp_max: tempMax,
@@ -34,18 +33,18 @@ function getWeatherData(data) {
         },
         weather: [{
             main: info,
-            description: description,
         }],
         wind: { speed: windSpeed },
     } = data;
 
-    return { cityName, feelsLike, humidity, temperature, windSpeed, tempMax, tempMin, info, description };
+    return { cityName, humidity, temperature, windSpeed, tempMax, tempMin, info, };
 }
 
 
 async function appendData(name) {
     try {
-        const temp = document.querySelector(".temperature");
+        const cityTitle = document.querySelector(".cityName");
+        const temp = document.querySelector(".temp");
         const weatherInfo = document.querySelector(".weather-condition");
         const maxTemp = document.querySelector(".maxTemp");
         const minTemp = document.querySelector(".minTemp");
@@ -54,14 +53,15 @@ async function appendData(name) {
 
 
         const data = await getLocation(name);
-        temp.textContent = data.temperature;
+        cityTitle.textContent = data.cityName;
+        temp.textContent = data.temperature + "°";
         weatherInfo.textContent = data.info;
-        maxTemp.textContent = data.tempMax;
-        minTemp.textContent = data.tempMin;
-        humidity.textContent = data.humidity;
+        maxTemp.textContent = data.tempMax + "°";
+        minTemp.textContent = data.tempMin + "°";
+        humidity.textContent = data.humidity + "%";
         windSpeed.textContent = data.windSpeed;
     } catch (e) {
-        alert("Error");
+        alert("Error, something went wrong!");
     }
 }
 
@@ -72,7 +72,10 @@ const searchBar = document.querySelector(".searchBar");
 searchBar.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        const val = document.querySelector(".searchBar").value;
-        appendData(val);
+        const value = document.querySelector(".searchBar").value;
+        appendData(value);
     }
 })
+
+
+appendData("Frankfurt");

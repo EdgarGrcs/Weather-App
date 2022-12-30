@@ -22,33 +22,54 @@
                 <div class="search-bar">
                     <input class="searchBar" type="text" placeholder="Enter city name:">
                 </div>
-                <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
+
+
+                <div class="chooseTemp"> Fahrenheit/Celsius</div>
+
             </div>
 
             <div class="footer">
                 EdgarGrcs
+                <div>
+                    API: <a href="www.openweathermap.com">Openweathermap.com</a>
+                </div>
             </div>
         </div>
         <div class="right-window">
+
+            <div class="backgroundColor"></div>
             <div class="info-window">
+
+                <div class="cityName"></div>
                 <div class="degree-weather-window">
-                    <div class="temperature"></div>
+                    <div class="temperature">
+                        <div class="tempTitle">
+                            Temperature
+                        </div>
+                        <div class="temp"></div>
+                    </div>
                     <div class="weather-condition"></div>
                 </div>
                 <div class="weather-info">
                     <div class="first-section">
-                        <div class="minTemp"></div>
-                        <div class="maxTemp"></div>
+
+                        <div class="infoWindow">
+                            <div class="tempTitle">Max Temp.</div>
+                            <div class="maxTemp"></div>
+                        </div>
+                        <div class="infoWindow">
+                            <div class="tempTitle">Min Temp.</div>
+                            <div class="minTemp"></div>
+                        </div>
                     </div>
                     <div class="second-section">
-                        <div class="humidity">
-
+                        <div class="infoWindow">
+                            <div class="tempTitle">Humidity</div>
+                            <div class="humidity"></div>
                         </div>
-                        <div class="windSpeed">
-
+                        <div class="infoWindow">
+                            <div class="tempTitle">Wind speed</div>
+                            <div class="windSpeed"></div>
                         </div>
                     </div>
                 </div>

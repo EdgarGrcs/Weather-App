@@ -40,7 +40,7 @@
 }
 
 .search-bar {
-    height: 20%;
+    height: 30%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -51,7 +51,7 @@
 .searchBar {
     border-radius: 25px;
     width: 60%;
-    height: 60%;
+    height: 70%;
     outline: none;
     border: none;
     text-align: center;
@@ -59,73 +59,26 @@
     font-weight: bold;
 }
 
+.chooseTemp {
+    margin-left: 35%;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 ::placeholder {
     color: grey;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin-left: 20%;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked+.slider {
-    background-color: #2196F3;
-}
-
-input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
 }
 
 .footer {
     text-align: center;
     font-weight: bold;
+    color: white;
+    margin-bottom: 1%;
+}
+
+a {
+    text-decoration: none;
     color: white;
 }
 
@@ -133,64 +86,117 @@ input:checked+.slider:before {
     width: 60%;
     height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+}
+
+.backgroundColor {
+    background-color: #17BEBB;
+    position: absolute;
+    height: 100%;
+    width: 60%;
+}
+
+.cityName {
+    font-weight: bold;
+    font-size: 36px;
+    z-index: 5;
+    height: 10%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .info-window {
-    height: 30%;
-    width: 50%;
-    border: 2px solid black;
+    height: 50%;
+    width: 60%;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 0 10px;
+    z-index: 5;
+    background-color: white;
 }
 
 .degree-weather-window {
-    height: 30%;
+    height: 20%;
     display: flex;
     border-bottom: 2px solid black;
-    padding: 1%;
 }
 
-.temperature,
+.temperature {
+    width: 50%;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color: black;
+    font-size: 36px;
+}
+
+.tempTitle {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    font-size: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.temp {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
 .weather-condition {
     width: 50%;
     border-radius: 25px;
-    background-color: rgb(195, 195, 195);
     display: flex;
-    border: 2px solid green;
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    color: white;
+    color: black;
     font-size: 36px;
 }
 
 .weather-info {
     height: 70%;
-    border: 2px solid red;
     padding: 1%;
 }
 
 .first-section,
 .second-section {
     height: 50%;
-    border: 2px solid black;
     display: flex;
     padding: 1%;
 }
 
-.minTemp,
 .maxTemp,
+.minTemp,
 .humidity,
 .windSpeed {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    font-size: 45px;
+}
+
+.infoWindow {
     height: 100%;
     width: 50%;
-    border: 2px solid red;
     border-radius: 25px;
-    background-color: rgb(195, 195, 195);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    color: white;
+    color: black;
     font-size: 36px;
 }
