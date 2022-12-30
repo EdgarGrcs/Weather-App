@@ -39,36 +39,40 @@ function getWeatherData(data) {
         wind: { speed: windSpeed },
     } = data;
 
-    console.log(data);
-
-
     return { cityName, feelsLike, humidity, temperature, windSpeed, tempMax, tempMin, info, description };
 }
 
 
-async function appendData() {
-
-    const temp = document.querySelector(".temperature");
-    const weatherInfo = document.querySelector(".weather-condition");
-    const maxTemp = document.querySelector(".maxTemp");
-    const minTemp = document.querySelector(".minTemp");
-    const humidity = document.querySelector(".humidity");
-    const windSpeed = document.querySelector(".windSpeed");
-
-
-    const data = await getLocation("Frankfurt");
-    temp.textContent = data.temperature;
-    weatherInfo.textContent = data.info;
+async function appendData(name) {
+    try {
+        const temp = document.querySelector(".temperature");
+        const weatherInfo = document.querySelector(".weather-condition");
+        const maxTemp = document.querySelector(".maxTemp");
+        const minTemp = document.querySelector(".minTemp");
+        const humidity = document.querySelector(".humidity");
+        const windSpeed = document.querySelector(".windSpeed");
 
 
-    maxTemp.textContent = data.tempMax;
-    minTemp.textContent = data.tempMin;
-    humidity.textContent = data.humidity;
-    windSpeed.textContent = data.windSpeed;
-
-
-
-
+        const data = await getLocation(name);
+        temp.textContent = data.temperature;
+        weatherInfo.textContent = data.info;
+        maxTemp.textContent = data.tempMax;
+        minTemp.textContent = data.tempMin;
+        humidity.textContent = data.humidity;
+        windSpeed.textContent = data.windSpeed;
+    } catch (e) {
+        alert("Error");
+    }
 }
 
-appendData();
+
+
+const searchBar = document.querySelector(".searchBar");
+
+searchBar.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        const val = document.querySelector(".searchBar").value;
+        appendData(val);
+    }
+})
