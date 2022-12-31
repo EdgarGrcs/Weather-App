@@ -1,14 +1,4 @@
-/**
- * Goals:
- * able to search for your location and let data output it
- * be able to display the data in both celcius and fahrenheit
- * be able to change the look of the page based on the data 
- *  - ex changing background, or adding a gif that describes the weather
- *  - ex use giphy API for that
- */
-
 // https://openweathermap.org/current  -- API documentation
-
 
 async function getLocation(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=cfe4c10894e8958662e9f26648de2b00`);
@@ -22,7 +12,6 @@ async function getLocation(city) {
 }
 
 function getWeatherData(data) {
-
     const {
         name: cityName,
         main: {
@@ -41,7 +30,7 @@ function getWeatherData(data) {
 }
 
 
-async function appendData(name) {
+async function appendData(name, checkBoxBool) {
     try {
         const cityTitle = document.querySelector(".cityName");
         const temp = document.querySelector(".temp");
@@ -53,18 +42,26 @@ async function appendData(name) {
 
 
         const data = await getLocation(name);
+
         cityTitle.textContent = data.cityName;
-        temp.textContent = data.temperature + "°";
+
+        if (checkBoxBool) {
+            temp.textContent = ((data.temperature * 1.8) + 32).toFixed(0) + " F";
+            maxTemp.textContent = ((data.tempMax * 1.8) + 32).toFixed(0) + " F";
+            minTemp.textContent = ((data.tempMin * 1.8) + 32).toFixed(0) + " F";
+        } else {
+            temp.textContent = (data.temperature).toFixed(0) + "°";
+            maxTemp.textContent = (data.tempMax).toFixed(0) + "°";
+            minTemp.textContent = (data.tempMin).toFixed(0) + "°";
+        }
+
         weatherInfo.textContent = data.info;
-        maxTemp.textContent = data.tempMax + "°";
-        minTemp.textContent = data.tempMin + "°";
         humidity.textContent = data.humidity + "%";
         windSpeed.textContent = data.windSpeed;
     } catch (e) {
         alert("Error, something went wrong!");
     }
 }
-
 
 
 const searchBar = document.querySelector(".searchBar");
@@ -77,5 +74,4 @@ searchBar.addEventListener("keypress", function(event) {
     }
 })
 
-
-appendData("Frankfurt");
+appendData("Tokyo");

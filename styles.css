@@ -36,7 +36,6 @@
 .search-window {
     margin-bottom: 5%;
     height: 20%;
-    border: 2px solid red;
 }
 
 .search-bar {
@@ -44,7 +43,6 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border: 2px solid red;
     align-items: center;
 }
 
@@ -59,8 +57,14 @@
     font-weight: bold;
 }
 
+.switchTemp {
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
+}
+
 .chooseTemp {
-    margin-left: 35%;
+    margin-left: 2%;
     color: white;
     font-weight: bold;
     font-size: 16px;
@@ -89,7 +93,6 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
 }
 
 .backgroundColor {
